@@ -135,7 +135,7 @@ public class RootResource extends LwM2mClientCoapResource {
     }
 
     @Override
-    public void handleIPATCH(CoapExchange exchange) {
+    public void handlePATCH(CoapExchange exchange) {
         ServerIdentity identity = getServerOrRejectRequest(exchange);
         if (identity == null)
             return;
