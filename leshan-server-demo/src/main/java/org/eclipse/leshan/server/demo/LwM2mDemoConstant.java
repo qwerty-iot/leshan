@@ -20,7 +20,7 @@ public class LwM2mDemoConstant {
     // TODO create a leshan-demo project ?
     public final static String[] modelPaths = new String[] { "8.xml", "9.xml", "10-1_0.xml", "10.xml", "11-1_0.xml",
                             "11.xml", "12-1_0.xml", "12.xml", "13-1_0.xml", "13.xml", "14.xml", "15.xml", "16.xml",
-                            "19.xml", "20.xml", "22.xml", "500.xml", "501.xml", "502.xml", "503.xml", "2048.xml",
+                            "19.xml", "20.xml", "22.xml", "500.xml", "501.xml", "502.xml", "503.xml", "666.xml", "667.xml", "2048.xml",
                             "2049.xml", "2050.xml", "2051.xml", "2052.xml", "2053.xml", "2054.xml", "2055.xml",
                             "2056.xml", "2057.xml", "3200-1_0.xml", "3200.xml", "3201-1_0.xml", "3201.xml",
                             "3202-1_0.xml", "3202.xml", "3203-1_0.xml", "3203.xml", "3300-1_0.xml", "3300.xml",

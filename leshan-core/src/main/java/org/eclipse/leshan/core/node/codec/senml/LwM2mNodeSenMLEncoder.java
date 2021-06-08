@@ -252,15 +252,14 @@ public class LwM2mNodeSenMLEncoder implements TimestampedNodeEncoder, MultiNodeE
 
             if (records.isEmpty()) {
                 if (!n.isEmpty()) {
-                    record.setBaseName(bn+"/");
-                } else {
-                    record.setBaseName(bn);
+                    bn += "/";
                 }
+                record.setBaseName(bn);
             }
             record.setName(n);
 
             // Convert value using expected type
-            LwM2mPath lwM2mResourcePath = new LwM2mPath(bn + "/" + n);
+            LwM2mPath lwM2mResourcePath = new LwM2mPath(bn + n);
             Object convertedValue = converter.convertValue(value, valueType, expectedType, lwM2mResourcePath);
             setResourceValue(convertedValue, expectedType, lwM2mResourcePath, record);
 
