@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LWM2M xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://openmobilealliance.org/tech/profiles/LWM2M-v1_1.xsd">
+	<Object ObjectType="MODefinition">
+		<Name>Test Data</Name>
+		<Description1><![CDATA[This is test data.]]></Description1>
+		<Description2><![CDATA[This is test data.]]></Description2>
+		<ObjectID>666</ObjectID>
+		<ObjectURN>urn:oma:lwm2m:oma:666:1.1</ObjectURN>
+		<LWM2MVersion>1.1</LWM2MVersion>
+		<ObjectVersion>1.1</ObjectVersion>
+		<MultipleInstances>Multiple</MultipleInstances>
+		<Mandatory>Optional</Mandatory>
+		<Resources>
+			<Item ID="100"><Name>Int Value</Name>
+				<Operations>RW</Operations>
+				<MultipleInstances>Single</MultipleInstances>
+				<Mandatory>Optional</Mandatory>
+				<Type>Integer</Type>
+				<RangeEnumeration/>
+				<Units/>
+				<Description/>
+			</Item>
+			<Item ID="101"><Name>Float Value</Name>
+				<Operations>RW</Operations>
+				<MultipleInstances>Single</MultipleInstances>
+				<Mandatory>Optional</Mandatory>
+				<Type>Float</Type>
+				<RangeEnumeration/>
+				<Units/>
+				<Description/>
+			</Item>
+			<Item ID="102"><Name>String Value</Name>
+				<Operations>RW</Operations>
+				<MultipleInstances>Single</MultipleInstances>
+				<Mandatory>Optional</Mandatory>
+				<Type>String</Type>
+				<RangeEnumeration/>
+				<Units/>
+				<Description/>
+			</Item>
+			<Item ID="103"><Name>Boolean Value</Name>
+				<Operations>RW</Operations>
+				<MultipleInstances>Single</MultipleInstances>
+				<Mandatory>Optional</Mandatory>
+				<Type>Boolean</Type>
+				<RangeEnumeration/>
+				<Units/>
+				<Description/>
+			</Item>
+			<Item ID="104"><Name>Time Value</Name>
+				<Operations>RW</Operations>
+				<MultipleInstances>Single</MultipleInstances>
+				<Mandatory>Optional</Mandatory>
+				<Type>Time</Type>
+				<RangeEnumeration/>
+				<Units/>
+				<Description/>
+			</Item>
+			<Item ID="105"><Name>Link Value</Name>
+				<Operations>RW</Operations>
+				<MultipleInstances>Single</MultipleInstances>
+				<Mandatory>Optional</Mandatory>
+				<Type>Objlnk</Type>
+				<RangeEnumeration/>
+				<Units/>
+				<Description/>
+			</Item>
+			<Item ID="106"><Name>Opaque Value</Name>
+				<Operations>RW</Operations>
+				<MultipleInstances>Single</MultipleInstances>
+				<Mandatory>Optional</Mandatory>
+				<Type>Opaque</Type>
+				<RangeEnumeration/>
+				<Units/>
+				<Description/>
+			</Item>
+			<Item ID="1000"><Name>Int Array Value</Name>
+				<Operations>RW</Operations>
+				<MultipleInstances>Multiple</MultipleInstances>
+				<Mandatory>Optional</Mandatory>
+				<Type>Integer</Type>
+				<RangeEnumeration/>
+				<Units/>
+				<Description/>
+			</Item>
+			<Item ID="1001"><Name>Float Array Value</Name>
+				<Operations>RW</Operations>
+				<MultipleInstances>Multiple</MultipleInstances>
+				<Mandatory>Optional</Mandatory>
+				<Type>Float</Type>
+				<RangeEnumeration/>
+				<Units/>
+				<Description/>
+			</Item>
+			<Item ID="1002"><Name>String Array Value</Name>
+				<Operations>RW</Operations>
+				<MultipleInstances>Multiple</MultipleInstances>
+				<Mandatory>Optional</Mandatory>
+				<Type>String</Type>
+				<RangeEnumeration/>
+				<Units/>
+				<Description/>
+			</Item>
+			<Item ID="1003"><Name>Bool Array Value</Name>
+				<Operations>RW</Operations>
+				<MultipleInstances>Multiple</MultipleInstances>
+				<Mandatory>Optional</Mandatory>
+				<Type>Boolean</Type>
+				<RangeEnumeration/>
+				<Units/>
+				<Description/>
+			</Item>
+			<Item ID="1004"><Name>Time Array Value</Name>
+				<Operations>RW</Operations>
+				<MultipleInstances>Multiple</MultipleInstances>
+				<Mandatory>Optional</Mandatory>
+				<Type>Time</Type>
+				<RangeEnumeration/>
+				<Units/>
+				<Description/>
+			</Item>
+			<Item ID="1005"><Name>Link Array Value</Name>
+				<Operations>RW</Operations>
+				<MultipleInstances>Multiple</MultipleInstances>
+				<Mandatory>Optional</Mandatory>
+				<Type>Objlnk</Type>
+				<RangeEnumeration/>
+				<Units/>
+				<Description/>
+			</Item>
+			<Item ID="1006"><Name>Opaque Array Value</Name>
+				<Operations>RW</Operations>
+				<MultipleInstances>Multiple</MultipleInstances>
+				<Mandatory>Optional</Mandatory>
+				<Type>Opaque</Type>
+				<RangeEnumeration/>
+				<Units/>
+				<Description/>
+			</Item>
+		</Resources>
+	</Object>
+</LWM2M>

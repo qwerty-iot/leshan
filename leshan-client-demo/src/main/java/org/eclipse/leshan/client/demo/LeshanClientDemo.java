@@ -71,14 +71,18 @@ import org.eclipse.leshan.client.resource.LwM2mObjectEnabler;
 import org.eclipse.leshan.client.resource.ObjectsInitializer;
 import org.eclipse.leshan.client.resource.listener.ObjectsListenerAdapter;
 import org.eclipse.leshan.core.CertificateUsage;
+import org.eclipse.leshan.client.servers.ServerIdentity;
 import org.eclipse.leshan.core.LwM2m;
 import org.eclipse.leshan.core.californium.DefaultEndpointFactory;
 import org.eclipse.leshan.core.model.LwM2mModel;
 import org.eclipse.leshan.core.model.ObjectLoader;
 import org.eclipse.leshan.core.model.ObjectModel;
 import org.eclipse.leshan.core.model.StaticModel;
+import org.eclipse.leshan.core.node.LwM2mResourceInstance;
+import org.eclipse.leshan.core.node.ObjectLink;
 import org.eclipse.leshan.core.node.codec.DefaultLwM2mNodeDecoder;
 import org.eclipse.leshan.core.node.codec.DefaultLwM2mNodeEncoder;
+import org.eclipse.leshan.core.request.ContentFormat;
 import org.eclipse.leshan.core.util.Hex;
 import org.eclipse.leshan.core.util.SecurityUtil;
 import org.slf4j.Logger;
@@ -92,7 +96,7 @@ public class LeshanClientDemo {
     // TODO create a leshan-demo project ?
     public final static String[] modelPaths = new String[] { "8.xml", "9.xml", "10.xml", "11.xml", "12.xml", "13.xml",
                             "14.xml", "15.xml", "16.xml", "19.xml", "20.xml", "22.xml", "500.xml", "501.xml", "502.xml",
-                            "503.xml", "2048.xml", "2049.xml", "2050.xml", "2051.xml", "2052.xml", "2053.xml",
+                            "503.xml", "666.xml", "667.xml", "2048.xml", "2049.xml", "2050.xml", "2051.xml", "2052.xml", "2053.xml",
                             "2054.xml", "2055.xml", "2056.xml", "2057.xml", "3200.xml", "3201.xml", "3202.xml",
                             "3203.xml", "3300.xml", "3301.xml", "3302.xml", "3303.xml", "3304.xml", "3305.xml",
                             "3306.xml", "3308.xml", "3310.xml", "3311.xml", "3312.xml", "3313.xml", "3314.xml",
@@ -132,6 +136,8 @@ public class LeshanClientDemo {
                             "18831.xml", };
 
     private static final int OBJECT_ID_TEMPERATURE_SENSOR = 3303;
+    private static final int OBJECT_ID_TEST_DATA = 666;
+    private static final int OBJECT_ID_MORE_TEST_DATA = 667;
     private final static String DEFAULT_ENDPOINT = "LeshanClientDemo";
     private final static int DEFAULT_LIFETIME = 5 * 60; // 5min in seconds
     private final static String USAGE = "java -jar leshan-client-demo.jar [OPTION]\n\n";
@@ -684,6 +690,10 @@ public class LeshanClientDemo {
         initializer.setInstancesForObject(DEVICE, new MyDevice());
         initializer.setInstancesForObject(LOCATION, locationInstance);
         initializer.setInstancesForObject(OBJECT_ID_TEMPERATURE_SENSOR, new RandomTemperatureSensor());
+        initializer.setInstancesForObject(OBJECT_ID_TEST_DATA, new TestData());
+        initializer.setFactoryForObject(OBJECT_ID_TEST_DATA, new TestDataFactory());
+        initializer.setInstancesForObject(OBJECT_ID_MORE_TEST_DATA, new TestData());
+        initializer.setFactoryForObject(OBJECT_ID_MORE_TEST_DATA, new TestDataFactory());
         List<LwM2mObjectEnabler> enablers = initializer.createAll();
 
         // Create CoAP Config
@@ -921,10 +931,27 @@ public class LeshanClientDemo {
                     } catch (Exception e) {
                         // skip last token
                         scanner.next();
-                        LOG.info("\"Invalid syntax, <objectid> must be an integer : delete <objectId>");
+                        LOG.info("Invalid syntax, <objectid> must be an integer : delete <objectId>");
                     }
                 } else if (command.startsWith("update")) {
                     client.triggerRegistrationUpdate();
+                } else if (command.startsWith("send")) {
+                    LOG.info("sending (enter x to send)");
+                    ArrayList<String> paths = new ArrayList<String>();
+                    while(scanner.hasNext()) {
+                        String path = scanner.next();
+                        if(path.equals("x")) {
+                            break;
+                        }
+                       paths.add(path);
+                    }
+
+                    Map<String, ServerIdentity> servers = client.getRegisteredServers();
+                    LOG.info("sending to {}", servers.toString());
+                    for (Map.Entry<String, ServerIdentity> entry : servers.entrySet()) {
+                        LOG.info("sending to {}", entry.getKey());
+                        client.sendData(entry.getValue(), ContentFormat.SENML_CBOR, paths,2000);
+                    }
                 } else if (command.length() == 1 && wasdCommands.contains(command.charAt(0))) {
                     locationInstance.moveLocation(command);
                 } else {
